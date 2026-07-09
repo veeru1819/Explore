@@ -19,8 +19,8 @@ jobs:
     # NOTE: Replace 'YOUR_DOCKERHUB_USERNAME' with your actual username below
     - name: Build and Push Docker Image
       run: |
-        docker build -t YOUR_DOCKERHUB_USERNAME/foodcourt-tomcat:latest .
-        docker push YOUR_DOCKERHUB_USERNAME/foodcourt-tomcat:latest
+        docker build -t veeru1449/foodcourt-tomcat:latest .
+        docker push veeru1449/foodcourt-tomcat:latest
 
     # 2. Tell Kubernetes to apply the changes and refresh the pods
     - name: Deploy to Kubernetes Cluster
