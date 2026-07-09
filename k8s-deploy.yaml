@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foodcourt-deployment
+  labels:
+    app: foodcourt
+spec:
+  replicas: 2 # Runs two copies for high availability
+  selector:
+    matchLabels:
+      app: foodcourt
+  template:
+    metadata:
+      labels:
+        app: foodcourt
+    spec:
+      containers:
+      - name: tomcat-foodcourt
+        image: veeru1449/foodcourt-tomcat:latest # Your image registry path
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: foodcourt-service
+spec:
+  type: NodePort # Exposes the application on a port across all cluster nodes
+  selector:
+    app: foodcourt
+  ports:
+    - port: 8080       # Port inside the cluster
+      targetPort: 8080 # Port on the Tomcat container
+      nodePort: 30080  # The external port you will type into your browser

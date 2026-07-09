@@ -1,4 +1,4 @@
-name: Local Auto Deployment
+name: Kubernetes Auto Deployment
 
 on:
   push:
@@ -6,21 +6,24 @@ on:
 
 jobs:
   deploy:
-    # This line tells GitHub to run the steps on your local Ubuntu machine!
     runs-on: [self-hosted]
 
     steps:
-    # 1. Pull the absolute latest commit changes automatically
     - name: Checkout Code
       uses: actions/checkout@v4
 
-    # 2. Recompile the fresh .war file locally
     - name: Build Web App Archive
       run: mvn clean package -DskipTests
 
-    # 3. Rebuild the Docker image and restart the container cleanly
-    - name: Recreate Docker Container
+    # 1. Build and Tag the image for Docker Hub
+    # NOTE: Replace 'YOUR_DOCKERHUB_USERNAME' with your actual username below
+    - name: Build and Push Docker Image
       run: |
-        docker build -t foodcourt-tomcat .
-        docker rm -f foodcourt-running || true
-        docker run -d -p 8080:8080 --name foodcourt-running foodcourt-tomcat
+        docker build -t YOUR_DOCKERHUB_USERNAME/foodcourt-tomcat:latest .
+        docker push YOUR_DOCKERHUB_USERNAME/foodcourt-tomcat:latest
+
+    # 2. Tell Kubernetes to apply the changes and refresh the pods
+    - name: Deploy to Kubernetes Cluster
+      run: |
+        kubectl apply -f k8s-deploy.yaml
+        kubectl rollout restart deployment/foodcourt-deployment
