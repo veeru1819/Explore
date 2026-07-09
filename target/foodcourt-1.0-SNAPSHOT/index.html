@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Variant Food Court</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #fcf8f2; color: #333; }
+        header { background: linear-gradient(135deg, #ff4e50, #f9d423); color: white; text-align: center; padding: 3rem 1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        header h1 { margin: 0; font-size: 3rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        header p { font-size: 1.2rem; margin-top: 0.5rem; opacity: 0.9; }
+        .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card-img { height: 200px; background-size: cover; background-position: center; }
+        .burger-img { background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=500'); }
+        .pizza-img { background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=500'); }
+        .asian-img { background-image: url('https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=500'); }
+        .card-content { padding: 1.5rem; }
+        .card-content h3 { margin: 0 0 0.5rem 0; color: #ff4e50; }
+        .badge { background: #ffebeb; color: #ff4e50; padding: 0.25rem 0.7rem; border-radius: 20px; font-size: 0.85rem; font-weight: bold; display: inline-block; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>The Variant Food Court</h1>
+        <p>One Stop. A Thousand Flavors.</p>
+    </header>
+    <div class="container">
+        <div class="grid">
+            <div class="card">
+                <div class="card-img burger-img"></div>
+                <div class="card-content">
+                    <span class="badge">Stall 01 - Neon Burgers</span>
+                    <h3>Gourmet Smash Burgers</h3>
+                    <p>Crispy edges, juicy centers, and artisanal house sauces built to satisfy.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img pizza-img"></div>
+                <div class="card-content">
+                    <span class="badge">Stall 02 - Fire & Crust</span>
+                    <h3>Woodfired Neapolitan Pizza</h3>
+                    <p>Authentic leopard-crusted pizza cooked to perfection in 90 seconds flat.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img asian-img"></div>
+                <div class="card-content">
+                    <span class="badge">Stall 03 - Wok Fusion</span>
+                    <h3>Pan-Asian Street Eats</h3>
+                    <p>Fiery wok-tossed noodles, fresh dim sum, and traditional ramen bowls.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
