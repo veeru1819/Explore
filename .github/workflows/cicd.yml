@@ -1,0 +1,25 @@
+name: Java Web App CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Build Web Application Archive (WAR)
+      run: mvn clean package -DskipTests
+
+    - name: Verify Build Output
+      run: ls -la target/*.war
