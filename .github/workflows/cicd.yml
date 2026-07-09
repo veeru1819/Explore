@@ -7,7 +7,7 @@ on:
 jobs:
   deploy:
     # This line tells GitHub to run the steps on your local Ubuntu machine!
-    runs-on: [self-hosted, local-deploy]
+    runs-on: [self-hosted]
 
     steps:
     # 1. Pull the absolute latest commit changes automatically
